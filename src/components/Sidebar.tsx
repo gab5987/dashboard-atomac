@@ -13,7 +13,7 @@ import {
 
 const Sidebar = (props: any) => {
     return(
-        <ProSidebar className='App-sidebar'>
+        <ProSidebar className='App-sidebar border border-dark rounded'>
             <SidebarHeader>
                 <div className="App-sidebar-header pt-3 d-flex justify-content-center">
                     <img width="50%" height="50%" 

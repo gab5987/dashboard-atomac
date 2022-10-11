@@ -1,8 +1,27 @@
 @import "../../App.scss";
 
+$context-size: 100vw - $sidebar-width;
+
 .last-list_modal {
     position: sticky; top:0 !important;
     height: 20vh;
-    width: 100vw - $sidebar-width !important;
+    width: $context-size !important;
     background-color: #474a4f;
+}
+
+.last-list_modal p {
+    margin: 0;
+    font-size: 22px;
+    color: rgb(198, 198, 198);
+}
+
+.dashboard-collum {
+    width: ($context-size / 3);
+    height: 80vh;
+}
+
+.dashboard-collum_modal {
+    min-width: max-content;
+    flex-shrink: 0;
+    display: flex;
 }

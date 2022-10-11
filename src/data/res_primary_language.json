@@ -2,7 +2,9 @@
     "itens": {
         "dashboard": {
             "titles": {
-                "last_calls": "Ultimos Chamados"
+                "last_calls": "Últimos Chamados",
+                "next_events": "Próximos Eventos",
+                "next_prevent": "Próximas Preventivas"
             }
         }
     }
