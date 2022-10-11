@@ -1,5 +1,5 @@
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
-import './sidebar.scss';
+import './assets/sidebar.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faTableColumns,

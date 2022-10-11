@@ -1,29 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 
 import Sidebar from './components/Sidebar';
+import Dashboard from './components/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <Sidebar/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const resumeLanguage = require('./data/res_primary_language.json')
+
+class App extends React.Component<{}, {actualPage: string}> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      actualPage: 'dashboard',
+    };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Sidebar />
+        <div className="App-context">
+          {
+            this.state.actualPage === 'dashboard' && <Dashboard resumeLanguage={resumeLanguage.itens.dashboard} />
+          }
+        </div>
+      </div>
+    );
+  }
 }
-
 export default App;

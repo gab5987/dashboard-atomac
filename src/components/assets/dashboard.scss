@@ -1,0 +1,8 @@
+@import "../../App.scss";
+
+.last-list_modal {
+    position: sticky; top:0 !important;
+    height: 20vh;
+    width: 100vw - $sidebar-width !important;
+    background-color: #474a4f;
+}
