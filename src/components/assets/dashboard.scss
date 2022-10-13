@@ -25,3 +25,11 @@ $context-size: 100vw - $sidebar-width;
     flex-shrink: 0;
     display: flex;
 }
+
+.dashboard-collum_new-register {
+    font-size: medium;
+
+    input {
+        height: 30px;
+    }
+}
