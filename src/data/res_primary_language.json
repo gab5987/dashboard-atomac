@@ -3,6 +3,7 @@
         "dashboard": {
             "titles": {
                 "last_calls": "Últimos Chamados",
+                "new_call": "Cadastrar Novo Chamado",
                 "next_events": "Próximos Eventos no Prédio",
                 "next_prevent": "Próximas Preventivas"
             }

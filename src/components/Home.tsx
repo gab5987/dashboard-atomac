@@ -50,8 +50,12 @@ export default class Dashboard extends React.Component <{
     newRegister = () => {
         return(
             <div className="dashboard-collum_new-register">
-                <h4> Cadastrar novo chamado </h4>
-                <form >
+                <div className="d-flex justify-content-center">
+                    <h4> { this.props.resumeLanguage.titles.new_call } </h4>
+                </div>
+                <div className="pb-1" />
+
+                <form className="container" >
                     <div className="location">
                         <label style={{ paddingRight: "2%"}}>Local: </label>
                         <select 
@@ -77,16 +81,29 @@ export default class Dashboard extends React.Component <{
                             </select>
                         </div>
                     </div>
+                    <div className="pb-3" />
     
-                    <label>Nome: </label>
-                    <input type="text" name="name" /> <br/>
-    
-                    <label>Solicitação: </label>
-                    <select value={ this.state.request } onChange={(event) => {this.setState({request: Number(event.target.value)})}}> 
-                        { this.props.sharedData.requests.map((item: any, key: number) => { 
-                            return <option value={key} > {item} </option> 
-                        }) }
-                    </select>
+                    <div className="d-flex">
+                        <label style={{ paddingRight: "2%"}}>Nome: </label>
+                        <input className="form-control" type="text" name="name" />
+                    </div>
+                    <div className="pb-3" />
+
+                    <div className="d-flex">
+                        <label style={{ paddingRight: "2%"}}>Solicitação: </label>
+                        <select 
+                            className="form-select form-select-sm"
+                            value={ this.state.request } 
+                            onChange={(event) => {this.setState({request: Number(event.target.value)})}}> 
+
+                            { this.props.sharedData.requests.map((item: any, key: number) => { 
+                                return <option value={key} > {item} </option> 
+                            }) }
+                        </select>
+                    </div>
+                    <div className="pt-3 d-flex">
+                        <button className="btn btn-primary" type="submit">Registrar chamado</button>
+                    </div>
                 </form>
             </div>
         )
