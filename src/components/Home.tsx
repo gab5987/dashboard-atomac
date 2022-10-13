@@ -48,24 +48,35 @@ export default class Dashboard extends React.Component <{
     }
 
     newRegister = () => {
-        console.log(this.state.actualFloor)
         return(
             <div className="dashboard-collum_new-register">
                 <h4> Cadastrar novo chamado </h4>
-                <form>
-                    <label>Local: </label>
-                    <select value={ this.state.actualFloor } onChange={(event) => {this.setState({actualFloor: Number(event.target.value)})}}> 
-                        { this.props.sharedData.floors.map((item: any, key: number) => { 
-                            return <option value={key} > {item.name} </option> 
-                        }) }
-                    </select>
-    
-                    <select value={ this.state.actualCore } onChange={(event) => {this.setState({actualCore: Number(event.target.value)})}}> 
-                        { this.props.sharedData.floors[this.state.actualFloor].cores.map((item: any, key: number) => { 
-                            return <option value={key} > {item} </option> 
-                        }) }
-                    </select>
-                    <br/>
+                <form >
+                    <div className="location">
+                        <label style={{ paddingRight: "2%"}}>Local: </label>
+                        <select 
+                            className="form-select form-select-sm" 
+                            value={ this.state.actualFloor } 
+                            onChange={(event) => {this.setState({actualFloor: Number(event.target.value)})}}> 
+
+                            { this.props.sharedData.floors.map((item: any, key: number) => { 
+                                return <option value={key} > {item.name} </option> 
+                            }) }
+
+                        </select>
+
+                        <div style={{ width: "75%", paddingLeft: "1%"}}>
+                            <select
+                            className="form-select form-select-sm" 
+                            value={ this.state.actualCore } 
+                            onChange={(event) => {this.setState({actualCore: Number(event.target.value)})}}> 
+
+                            { this.props.sharedData.floors[this.state.actualFloor].cores.map((item: any, key: number) => { 
+                                return <option value={key} > {item} </option> 
+                            }) }
+                            </select>
+                        </div>
+                    </div>
     
                     <label>Nome: </label>
                     <input type="text" name="name" /> <br/>
