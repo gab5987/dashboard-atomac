@@ -4,7 +4,7 @@ import './assets/dashboard.scss';
 export default class Dashboard extends React.Component <{
     resumeLanguage: any,
     sharedData: any
-}, {actualFloor: number, actualCore: number, request: number }> {
+}, {actualFloor: number, actualCore: number, request: number, searchBoxValue: string }> {
 
     constructor(props: any) {
         super(props);
@@ -12,6 +12,7 @@ export default class Dashboard extends React.Component <{
             actualFloor: 0,
             actualCore: 0,
             request: 0,
+            searchBoxValue: ""
         }
         this.newRegister = this.newRegister.bind(this);
     }
@@ -24,7 +25,7 @@ export default class Dashboard extends React.Component <{
                     <h2> {this.props.resumeLanguage.titles.last_calls} </h2> 
                 </div>
 
-                <p className="border border-dark rounded">
+                <p className="border border-secondary rounded">
                     <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a> <br/>
                     <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a> <br/>
                     <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a>
@@ -32,25 +33,53 @@ export default class Dashboard extends React.Component <{
             </div>
 
             <div className="dashboard-collum_modal">
-                <div className="pt-2 dashboard-collum d-flex justify-content-center border border-dark rounded">
+                <div className="dashboard-collum border border-2 border-dark rounded">
                     { this.newRegister() }
+                    { this.searchPhone() }
                 </div>
 
-                <div className="pt-2 dashboard-collum d-flex justify-content-center border border-dark rounded">
+                <div className="pt-2 dashboard-collum d-flex justify-content-center border border-2 border-dark rounded">
                     <h2> {this.props.resumeLanguage.titles.next_events} </h2>
                 </div>
-                <div className="pt-2 dashboard-collum d-flex justify-content-center border border-dark rounded">
+                <div className="pt-2 dashboard-collum d-flex justify-content-center border border-2 border-dark rounded">
                     <h2> {this.props.resumeLanguage.titles.next_prevent} </h2>
                 </div>
             </div>
         </>
         )
     }
+    searchPhone = () => {
+        return(
+            <div className="dashboard-collum_search-phone">
+                <div className="pt-2 d-flex justify-content-center">
+                    <h4> { this.props.resumeLanguage.titles.search_phone } </h4>
+                </div>
+                <div className="search-box"> 
+                    <form className="d-flex pb-2" role="search">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                            value={ this.state.searchBoxValue } 
+                            onChange={(event) => {this.setState({searchBoxValue: event.target.value})}}
+                        />
+                        <button className="btn btn-outline-success" type="submit"> Buscar </button>
+                    </form>
+                    <div className="display-data">
+                        <ul className="list-group">
+                            { this.props.sharedData.phone.map( (item: any) => {
+                                return(
+                                    item.toLowerCase().includes(this.state.searchBoxValue.toLowerCase()) && <li className="list-group-item"> {item} </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
     newRegister = () => {
         return(
-            <div className="dashboard-collum_new-register">
-                <div className="d-flex justify-content-center">
+            <div className="dashboard-collum_new-register border-bottom border-dark rounded">
+                <div className="pt-2 d-flex justify-content-center">
                     <h4> { this.props.resumeLanguage.titles.new_call } </h4>
                 </div>
                 <div className="pb-1" />
@@ -105,6 +134,7 @@ export default class Dashboard extends React.Component <{
                         <button className="btn btn-primary" type="submit">Registrar chamado</button>
                     </div>
                 </form>
+                <div className="pb-3" />
             </div>
         )
     }

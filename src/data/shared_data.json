@@ -27,5 +27,34 @@
     ],
     "requests":[
         "Aumentar", "Diminuir", "Ligar", "Desligar", "Iluminação", "Evento"
+    ],
+
+    "phone": [
+        "1P-01 - Direção do Foro - Nº 2957",
+        "1P-02 - Secretaria de Administração - Nº 29578",
+        "1P-03 - Núcleo de Desenvovimento Humano - Nº 29579",
+        "1P-04 - Núcleo de Apoio Administrativo - Nº 29580",
+        "1P-05 - Núcleo de Gestão Funcional - Nº 29581",
+        "1P-06 - Núcleo de Contadoria - Nº 29582",
+        "1P-07 - Núcleo de Apoio Operacional - Nº 29583",
+        "1P-08 - Núcleo de Técnologia da Informacão - Nº 29584",
+
+        "2P-01 - 7 ª Vara - Nº 29585",
+        "2P-02 - 5 ª Vara - Nº 29586",
+        "2P-03 - Cejuscon - Nº 29587",
+        "2P-04 - 6 ª Vara - Nº 29588",
+        "2P-05 - Arquivo Administrativo - Nº 29589",
+        "2P-06 - Arquivo Judiciário - Nº 29590",
+        "2P-07 - NDOC - Nº 29591",
+        "2P-08 - Biblioteca - Nº 29592",
+        
+        "3P-01 - 4 ª Vara - Nº 29593",
+        "3P-02 - 3 ª Vara - Nº 29594",
+        "3P-03 - 2 ª Vara - Nº 29595",
+        "3P-04 - 9 ª Vara Dr Ivori - Nº 29596",
+        "3P-05 - Turmas Avançadas - Nº 29597",
+        "3P-06 - Central de Mandados / Turmas TRF4 - Nº 29598",
+        "3P-11 - Sala Vip - Nº 29600",
+        "3P-12 - Sala Ead - Nº 29601"
     ]
 }
