@@ -39,10 +39,10 @@ export default class Dashboard extends React.Component <{
                 </div>
 
                 <div className="pt-2 dashboard-collum d-flex justify-content-center border border-2 border-dark rounded">
-                    <h2> {this.props.resumeLanguage.titles.next_events} </h2>
+                    <h4> {this.props.resumeLanguage.titles.next_events} </h4>
                 </div>
                 <div className="pt-2 dashboard-collum d-flex justify-content-center border border-2 border-dark rounded">
-                    <h2> {this.props.resumeLanguage.titles.next_prevent} </h2>
+                    <h4> {this.props.resumeLanguage.titles.next_prevent} </h4>
                 </div>
             </div>
         </>
