@@ -9,16 +9,19 @@ import com.setup.dashboardAutomac.model.Users;
 import com.setup.dashboardAutomac.repository.UsersRepository;
 
 @RestController
-@RequestMapping("/users")
 public class UsersController {
 
     @Autowired private UsersRepository usersRepository;
 
-    @GetMapping public List<Users> getAlUsers() {
+    @RequestMapping("/users") @GetMapping public List<Users> getAlUsers() {
         return usersRepository.findAll();
     }
 
-    @PostMapping @ResponseStatus public Users InsertNewUser(@RequestBody Users users) {
+    @RequestMapping("/com-regUser-id/{id}") @GetMapping public Users getByID(@PathVariable String id) {
+        return usersRepository.findById(id).get();
+    }
+
+    @RequestMapping("/postUsers") @PostMapping @ResponseStatus public Users InsertNewUser(@RequestBody Users users) {
         return usersRepository.save(users);
     }
 }

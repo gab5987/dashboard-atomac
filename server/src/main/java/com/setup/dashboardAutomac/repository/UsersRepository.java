@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.setup.dashboardAutomac.model.Users;
 
 @Repository
-public interface UsersRepository extends JpaRepository<Users, Long> {
+public interface UsersRepository extends JpaRepository<Users, String> {
 
 }
