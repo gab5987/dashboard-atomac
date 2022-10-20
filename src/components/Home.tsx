@@ -1,20 +1,23 @@
 import React from "react";
 import './assets/dashboard.scss';
+import Clock from 'react-live-clock';
 
 export default class Dashboard extends React.Component <{
     resumeLanguage: any,
     sharedData: any
-}, {actualFloor: number, actualCore: number, request: number, searchBoxValue: string }> {
+}, {actualFloor: number, actualCore: number, request: number, searchBoxValue: string, callerName: string }> {
 
     constructor(props: any) {
         super(props);
         this.state = {
             actualFloor: 0,
             actualCore: 0,
+            callerName: "Fulano de tal",
             request: 0,
             searchBoxValue: ""
         }
         this.newRegister = this.newRegister.bind(this);
+        this.submitNewRegister = this.submitNewRegister.bind(this);
     }
         
     render() {
@@ -25,11 +28,19 @@ export default class Dashboard extends React.Component <{
                     <h2> {this.props.resumeLanguage.titles.last_calls} </h2> 
                 </div>
 
-                <p className="border border-secondary rounded">
-                    <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a> <br/>
-                    <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a> <br/>
-                    <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a>
-                </p>
+                <div className="d-flex">
+                    <p className="p-2 flex-fill border border-secondary rounded">
+                        <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal  Solicitação: desligar </a> <br/>
+                        <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a> <br/>
+                        <a style={{paddingLeft: "1%"}}> 1P-06 Nome: Fulano de Tal   Solicitação: desligar </a>
+                    </p>
+
+                    <p className="p-1 flex-fill border border-secondary rounded text-center">
+                        <h1 className="display-1">
+                            <Clock format="HH:mm:ss" ticking={true} interval={1000} />
+                        </h1>
+                    </p>
+                </div>
             </div>
 
             <div className="dashboard-collum_modal">
@@ -76,6 +87,33 @@ export default class Dashboard extends React.Component <{
         )
     }
 
+    submitNewRegister() {
+        const data = { 
+            floor: this.props.sharedData.floors[this.state.actualFloor].name,
+            core: this.props.sharedData.floors[this.state.actualFloor].cores[this.state.actualCore],
+            name: this.state.callerName,
+            requestType: this.props.sharedData.requests[this.state.request],
+            date: "11/06/2022",
+            attendant: "Gabriel"
+        };
+
+        fetch('http://localhost:1234/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+        return undefined;
+    }
+
     newRegister = () => {
         return(
             <div className="dashboard-collum_new-register border-bottom border-dark rounded">
@@ -84,7 +122,7 @@ export default class Dashboard extends React.Component <{
                 </div>
                 <div className="pb-1" />
 
-                <form className="container" >
+                <form className="container" onSubmit={ this.submitNewRegister() }>
                     <div className="location">
                         <label style={{ paddingRight: "2%"}}>Local: </label>
                         <select 
