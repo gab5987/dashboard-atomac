@@ -12,7 +12,7 @@ import {
     faUser
 } from '@fortawesome/free-solid-svg-icons';
 
-class Sidebar extends React.Component<{ userId: string | undefined }, { }> {
+class Sidebar extends React.Component<{ userId: string | undefined, isLoggedIn: boolean }, { }> {
     render() {
         return(
             <ProSidebar className='App-sidebar border border-dark rounded'>
@@ -29,27 +29,27 @@ class Sidebar extends React.Component<{ userId: string | undefined }, { }> {
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem icon={<FontAwesomeIcon icon={faTableColumns} />}>
-                            <a href = {`\?user_id=${this.props.userId}&window_location=dashboard`} > Dashboard </a>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=dashboard`} > Dashboard </a>
                         </MenuItem>
     
                         <MenuItem icon={<FontAwesomeIcon icon={faCircleExclamation} />}>
-                            <a href = {`\?user_id=${this.props.userId}&window_location=prevent`} > Preventivas </a>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=prevent`} > Preventivas </a>
                         </MenuItem>
     
                         <MenuItem icon={<FontAwesomeIcon icon={faCalendarDays} />}>
-                            <a href = {`\?user_id=${this.props.userId}&window_location=nextEvents`} > Eventos </a>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=nextEvents`} > Eventos </a>
                         </MenuItem>
     
                         <MenuItem icon={<FontAwesomeIcon icon={faNewspaper} />}>
-                            <a href = {`\?user_id=${this.props.userId}&window_location=monthlyRegister`} > Relatório mensal </a>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=monthlyRegister`} > Relatório mensal </a>
                         </MenuItem>
     
                         <MenuItem icon={<FontAwesomeIcon icon={faGears} />}>
-                            <a href = {`\?user_id=${this.props.userId}&window_location=settings`} > Preferências </a>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=settings`} > Preferências </a>
                         </MenuItem>
     
                         <MenuItem icon={<FontAwesomeIcon icon={faQuestion} />}>
-                            <a href = {`\?user_id=${this.props.userId}&window_location=help`} > Ajuda </a>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=help`} > Ajuda </a>
                         </MenuItem>
                     </Menu>
                 </SidebarContent>
@@ -57,7 +57,7 @@ class Sidebar extends React.Component<{ userId: string | undefined }, { }> {
                 <SidebarFooter>
                     <Menu iconShape="circle" className='exit-button'>
                         <MenuItem icon={<FontAwesomeIcon icon={faUser} />}>
-                            <a href="/home"> Sair </a>
+                            <a href="/"> Sair </a>
                         </MenuItem>
                     </Menu>
                 </SidebarFooter>
