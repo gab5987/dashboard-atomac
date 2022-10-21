@@ -1,6 +1,7 @@
 import React from "react";
 import './assets/dashboard.scss';
 import Clock from 'react-live-clock';
+import { Console } from "console";
 
 export default class Dashboard extends React.Component <{
     resumeLanguage: any,
@@ -17,7 +18,7 @@ export default class Dashboard extends React.Component <{
             searchBoxValue: ""
         }
         this.newRegister = this.newRegister.bind(this);
-        this.submitNewRegister = this.submitNewRegister.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
         
     render() {
@@ -87,31 +88,10 @@ export default class Dashboard extends React.Component <{
         )
     }
 
-    submitNewRegister() {
-        const data = { 
-            floor: this.props.sharedData.floors[this.state.actualFloor].name,
-            core: this.props.sharedData.floors[this.state.actualFloor].cores[this.state.actualCore],
-            name: this.state.callerName,
-            requestType: this.props.sharedData.requests[this.state.request],
-            date: "11/06/2022",
-            attendant: "Gabriel"
-        };
-
-        fetch('http://localhost:1234/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-        return undefined;
+    handleSubmit(event: any) {
+        event.preventDefault();
+        submitNewRegister(this.state, this.props.sharedData);
+        return false;
     }
 
     newRegister = () => {
@@ -122,7 +102,7 @@ export default class Dashboard extends React.Component <{
                 </div>
                 <div className="pb-1" />
 
-                <form className="container" onSubmit={ this.submitNewRegister() }>
+                <form className="container">
                     <div className="location">
                         <label style={{ paddingRight: "2%"}}>Local: </label>
                         <select 
@@ -169,11 +149,39 @@ export default class Dashboard extends React.Component <{
                         </select>
                     </div>
                     <div className="pt-3 d-flex">
-                        <button className="btn btn-primary" type="submit">Registrar chamado</button>
+                        <button className="btn btn-primary" onClick={ () => this.handleSubmit } type="submit">Registrar chamado</button>
                     </div>
                 </form>
                 <div className="pb-3" />
             </div>
         )
     }
+}
+
+function submitNewRegister(props: any, sharedData: any) {
+    console.log("entrou")
+    const data = { 
+        floor: sharedData.floors[props.actualFloor].name,
+        core: sharedData.floors[props.actualFloor].cores[props.actualCore],
+        name: props.callerName,
+        requestType: sharedData.requests[props.request],
+        date: "11/06/2022",
+        attendant: "Gabriel"
+    };
+
+    fetch('http://localhost:1234/register', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+    return undefined;
 }
