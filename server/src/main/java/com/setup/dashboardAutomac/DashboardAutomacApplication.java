@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DashboardAutomacApplication {
 	public static void main(String[] args) {
+		RenderGui.RenderAndShowGui();
 		SpringApplication.run(DashboardAutomacApplication.class, args);
 	}
 }
