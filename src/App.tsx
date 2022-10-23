@@ -76,8 +76,7 @@ class App extends React.Component<{},
     fetch( "http://localhost:1234/com-regUser-id/" + this.state.userPass )
     .then((res) => res.json())
     .then((data) => { 
-      console.log(data);
-      this.setState({ userId: data.id, isLoggedIn: true }) 
+      data.id ? this.setState({ userId: data.id, isLoggedIn: true }) : alert("Token inválido");
     })
     .catch((err) => { throw new Unauthorized("Usuário não encontrado") })
   }
