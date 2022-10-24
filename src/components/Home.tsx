@@ -3,6 +3,15 @@ import './assets/dashboard.scss';
 import Clock from 'react-live-clock';
 import { Console } from "console";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faList,
+    faPlus,
+    faPhone,
+    faCalendarDay,
+    faScrewdriverWrench
+} from '@fortawesome/free-solid-svg-icons';
+
 export default class Dashboard extends React.Component <{
     resumeLanguage: any,
     sharedData: any
@@ -26,7 +35,7 @@ export default class Dashboard extends React.Component <{
         <>
             <div className="last-list_modal container border border-dark rounded">
                 <div className="pt-1 d-flex justify-content-center"> 
-                    <h2> {this.props.resumeLanguage.titles.last_calls} </h2> 
+                    <h2> <FontAwesomeIcon icon={faList} /> {this.props.resumeLanguage.titles.last_calls} </h2> 
                 </div>
 
                 <div className="d-flex">
@@ -51,10 +60,10 @@ export default class Dashboard extends React.Component <{
                 </div>
 
                 <div className="pt-2 dashboard-collum d-flex justify-content-center border border-2 border-dark rounded">
-                    <h4> {this.props.resumeLanguage.titles.next_events} </h4>
+                    <h4> <FontAwesomeIcon icon={faCalendarDay} /> {this.props.resumeLanguage.titles.next_events} </h4>
                 </div>
                 <div className="pt-2 dashboard-collum d-flex justify-content-center border border-2 border-dark rounded">
-                    <h4> {this.props.resumeLanguage.titles.next_prevent} </h4>
+                    <h4> <FontAwesomeIcon icon={faScrewdriverWrench} /> {this.props.resumeLanguage.titles.next_prevent} </h4>
                 </div>
             </div>
         </>
@@ -64,7 +73,7 @@ export default class Dashboard extends React.Component <{
         return(
             <div className="dashboard-collum_search-phone">
                 <div className="pt-2 d-flex justify-content-center">
-                    <h4> { this.props.resumeLanguage.titles.search_phone } </h4>
+                    <h4> <FontAwesomeIcon icon={faPhone} /> { this.props.resumeLanguage.titles.search_phone } </h4>
                 </div>
                 <div className="search-box"> 
                     <form className="d-flex pb-2" role="search">
@@ -98,7 +107,7 @@ export default class Dashboard extends React.Component <{
         return(
             <div className="dashboard-collum_new-register border-bottom border-dark rounded">
                 <div className="pt-2 d-flex justify-content-center">
-                    <h4> { this.props.resumeLanguage.titles.new_call } </h4>
+                    <h4> <FontAwesomeIcon icon={faPlus} /> { this.props.resumeLanguage.titles.new_call } </h4>
                 </div>
                 <div className="pb-1" />
 
