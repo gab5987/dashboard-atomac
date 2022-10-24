@@ -1,4 +1,4 @@
-package com.setup.dashboardAutomac;
+package com.setup.dashboardAutomac.config;
 
 import java.awt.*;
 import javax.swing.*;
