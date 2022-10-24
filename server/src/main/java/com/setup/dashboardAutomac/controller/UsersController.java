@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.setup.dashboardAutomac.model.Users;
 import com.setup.dashboardAutomac.repository.UsersRepository;
 
+@CrossOrigin
 @RestController
 public class UsersController {
 

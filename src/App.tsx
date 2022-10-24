@@ -3,19 +3,21 @@ import './App.scss';
 
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Home';
+import EventsCalendar from './components/EventsCalendar';
 
 import { Unauthorized } from './RaiseExeption';
 
 const resumeLanguage = require('./data/res_primary_language.json');
 const sharedData = require('./data/shared_data.json');
 class App extends React.Component<{},
-  { actualPage: string | null, userId: string | undefined, isLoggedIn: boolean }> {
+  { actualPage: string | null, userId: string | undefined, isLoggedIn: boolean, userPass: string }> {
   constructor(props: any) {
     super(props);
     this.state = {
       actualPage: null,
       userId: undefined,
-      isLoggedIn: false
+      isLoggedIn: false,
+      userPass: ""
     };
     this.raiseApp = this.raiseApp.bind(this);
     this.raiseLogin = this.raiseLogin.bind(this);
@@ -28,6 +30,7 @@ class App extends React.Component<{},
       userId: url.get('user_id') || "guest",
       isLoggedIn: ( url.get('isLogged') === 'true' && true ) || false,
     });
+    this.fetchUserID = this.fetchUserID.bind(this);
   }
 
   render() {
@@ -52,19 +55,31 @@ class App extends React.Component<{},
 
             <form className='pt-3'>
               <label> insira seu Token: </label>
-              <input className="form-control me-2" type="password"/>
+              <input className="form-control me-2" type="password" 
+                value={ this.state.userPass } 
+                onChange={(event) => {this.setState({ userPass: event.target.value })}}
+              />
               <div className='pt-2' />
 
               <div className='pt-3 d-flex justify-content-center'>
-                <button className="btn btn-primary" type="submit" style={{ marginRight: '10px' }}> Entrar </button>
-                <button className='btn btn-outline-info' style={{ marginRight: '10px' }}> Cadastrar Usuário </button>
-                <button className='btn btn-outline-warning' onClick={() => {this.setState({isLoggedIn: true })}}> Visitante </button>
+                <button className="btn btn-primary" type="button" style={{ marginRight: '10px' }} onClick={() => { this.fetchUserID() } } > Entrar </button>
+                <button className='btn btn-outline-info' type="button" style={{ marginRight: '10px' }}> Cadastrar Usuário </button>
+                <button className='btn btn-outline-warning' type="button" onClick={() => { this.setState({ isLoggedIn: true, userId: "guest" }) } }> Visitante </button>
               </div>
             </form>
           </div>
         </div>
       </div>
     )
+  }
+
+   fetchUserID() {
+    fetch( "http://localhost:1234/com-regUser-id/" + this.state.userPass )
+    .then((res) => res.json())
+    .then((data) => { 
+      data.id ? this.setState({ userId: data.id, isLoggedIn: true }) : alert("Token inválido");
+    })
+    .catch((err) => { throw new Unauthorized("Usuário não encontrado") })
   }
 
   raiseApp() {
@@ -85,6 +100,9 @@ class App extends React.Component<{},
             this.state.actualPage === 'settings' && ( 
               this.state.userId === 'guest' ? <Unauthorized /> : <h1> teste </h1>
             )
+          }
+          { 
+            this.state.actualPage === 'nextEvents' && <EventsCalendar />
           } 
         </div>
       </div>
