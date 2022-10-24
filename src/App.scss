@@ -11,6 +11,10 @@ $sidebar-height: 100vh;
     position: fixed;
   }
   
+  .events-calendar { 
+    padding-left: $sidebar-width;
+  }
+
   .App-context {
     min-height: 100vh;
     width: 100vw - $sidebar-width;

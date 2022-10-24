@@ -3,6 +3,7 @@ import './App.scss';
 
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Home';
+import EventsCalendar from './components/EventsCalendar';
 
 import { Unauthorized } from './RaiseExeption';
 
@@ -63,7 +64,7 @@ class App extends React.Component<{},
               <div className='pt-3 d-flex justify-content-center'>
                 <button className="btn btn-primary" type="button" style={{ marginRight: '10px' }} onClick={() => { this.fetchUserID() } } > Entrar </button>
                 <button className='btn btn-outline-info' type="button" style={{ marginRight: '10px' }}> Cadastrar Usuário </button>
-                <button className='btn btn-outline-warning' type="button" onClick={() => this.fetchUserID }> Visitante </button>
+                <button className='btn btn-outline-warning' type="button" onClick={() => { this.setState({ isLoggedIn: true, userId: "guest" }) } }> Visitante </button>
               </div>
             </form>
           </div>
@@ -99,6 +100,9 @@ class App extends React.Component<{},
             this.state.actualPage === 'settings' && ( 
               this.state.userId === 'guest' ? <Unauthorized /> : <h1> teste </h1>
             )
+          }
+          { 
+            this.state.actualPage === 'nextEvents' && <EventsCalendar />
           } 
         </div>
       </div>
