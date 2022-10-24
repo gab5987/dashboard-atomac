@@ -12,7 +12,7 @@
 
 	<groupId>com.setup</groupId>
 	<artifactId>dashboardAutomac</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.7-SNAPSHOT</version>
 	<name>dashboardAutomac</name>
 	<description>Serverside Dashboard Automac</description>
 
@@ -30,6 +30,18 @@
 			<version>2.7.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		
 
 		<!-- <dependency>
 			<groupId>com.h2database</groupId>
