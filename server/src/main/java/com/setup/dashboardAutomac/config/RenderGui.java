@@ -57,14 +57,20 @@ public class RenderGui extends JPanel {
         JMenuItem exportar_banco_de_dadosItem = new JMenuItem ("Exportar Banco de dados");
         arquivoMenu.add (exportar_banco_de_dadosItem);
         JMenu ajudaMenu = new JMenu ("Ajuda");
-        JMenuItem option_1Item = new JMenuItem ("Option 1");
+        JMenuItem option_1Item = new JMenuItem ("Documentação Técnica");
         ajudaMenu.add (option_1Item);
-        JMenuItem option_2Item = new JMenuItem ("Option 2");
+        JMenuItem option_2Item = new JMenuItem ("Central de Ajuda - via web");
         ajudaMenu.add (option_2Item);
         String[] jcomp5Items = {"Item 1", "Item 2", "Item 3"};
 
         //construct components
         jcomp1 = new JButton ("Sair");
+        jcomp1.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+              System.exit(0);
+            } 
+          } );
+
         jcomp2 = new JMenuBar();
         jcomp2.add (arquivoMenu);
         jcomp2.add (ajudaMenu);
@@ -77,12 +83,12 @@ public class RenderGui extends JPanel {
           } );
 
         jcomp5 = new JList (jcomp5Items);
-        jcomp6 = new JLabel ("Servidor ativo !");
+        jcomp6 = new JLabel ("<html><font color='green'>Servidor ativo !</font></html>");
         jcomp7 = new JLabel ("Para utilizar o sistema, utilize o ip deste compuatdor. ");     
         jcomp8 = new JLabel (icon);
 
         //adjust size and set layout
-        setPreferredSize (new Dimension (681, 406));
+        setPreferredSize (new Dimension (681, 250));
         setLayout (null);
 
         //add components
@@ -90,19 +96,19 @@ public class RenderGui extends JPanel {
         add (jcomp2);
         add (jcomp3);
         add (jcomp4);
-        add (jcomp5);
+        // add (jcomp5);
         add (jcomp6);
         add (jcomp7);
         add (jcomp8);
 
         //set component bounds (only needed by Absolute Positioning)
-        jcomp1.setBounds (15, 360, 100, 25);
+        jcomp1.setBounds (15, 200, 100, 25);
         jcomp2.setBounds (0, 0, 680, 30);
         jcomp3.setBounds (185, 30, 290, 80);
-        jcomp4.setBounds (480, 360, 180, 25);
+        jcomp4.setBounds (480, 200, 180, 25);
         jcomp5.setBounds (100, 135, 485, 135);
         jcomp6.setBounds (100, 90, 100, 25);
-        jcomp7.setBounds (100, 105, 205, 25);
+        jcomp7.setBounds (100, 105, 420, 25);
         jcomp8.setBounds (510, 30, 100, 100);
     }
     public static void RenderAndShowGui() {
