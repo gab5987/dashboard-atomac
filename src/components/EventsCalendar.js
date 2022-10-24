@@ -3,6 +3,7 @@ import React from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 // import timeGridPlugin from "@fullcalendar/timegrid";
+import ptBr from '@fullcalendar/core/locales/pt-br';
 
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
@@ -11,7 +12,7 @@ import "@fullcalendar/timegrid/main.css";
 import events from "./events";
 
 export default class EventsCalendar extends React.Component {
-    contructor(props: any){
+    contructor(props){
     }
 
     render() {
@@ -21,6 +22,7 @@ export default class EventsCalendar extends React.Component {
                 themeSystem="Simplex"
                 plugins={[dayGridPlugin]}
                 events={events}
+                locale={ptBr}
               />
             </div>
           );
