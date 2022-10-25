@@ -3,53 +3,54 @@
 $context-size: 100vw - $sidebar-width;
 
 .last-list_modal {
-    position: sticky; top:0 !important;
-    height: 20vh;
-    min-width: $context-size !important;
-    background-color: #474a4f;
+  position: sticky;
+  top: 0 !important;
+  height: 20vh;
+  min-width: $context-size !important;
+  background-color: #474a4f;
 }
 
 .last-list_modal p {
-    margin: 0;
-    font-size: 22px;
-    color: rgb(198, 198, 198);
+  margin: 0;
+  font-size: 22px;
+  color: rgb(198, 198, 198);
 }
 
 .dashboard-collum {
-    width: ($context-size / 3);
-    height: 80vh;
+  width: ($context-size / 3);
+  height: 80vh;
 }
 
 .dashboard-collum_modal {
-    min-width: max-content;
-    flex-shrink: 0;
-    display: flex;
+  min-width: max-content;
+  flex-shrink: 0;
+  display: flex;
 }
 
 .dashboard-collum_search-phone {
-    font-size: medium;
-    min-width: 100%;
-    .search-box { 
-        margin: 1rem; 
-        .display-data {
-            overflow-y: scroll;
-            height: 15rem;
-        }
+  font-size: medium;
+  min-width: 100%;
+  .search-box {
+    margin: 1rem;
+    .display-data {
+      overflow-y: scroll;
+      height: 15rem;
     }
+  }
 }
 
 .dashboard-collum_new-register {
-    font-size: medium;
-    min-width: 100%;
-    max-height: fit-content;
-    .location { 
-        display: flex;
-    }
-    form {
-        display: block;
-    }
+  font-size: medium;
+  min-width: 100%;
+  max-height: fit-content;
+  .location {
+    display: flex;
+  }
+  form {
+    display: block;
+  }
 
-    input {
-        height: 30px;
-    }
+  input {
+    height: 30px;
+  }
 }
