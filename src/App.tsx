@@ -4,6 +4,7 @@ import './App.scss';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Home';
 import EventsCalendar from './components/EventsCalendar';
+import CreateEvent from './components/CreateEvent';
 
 import { Unauthorized } from './RaiseExeption';
 
@@ -103,7 +104,12 @@ class App extends React.Component<{},
           }
           { 
             this.state.actualPage === 'nextEvents' && <EventsCalendar />
-          } 
+          }
+          { 
+            this.state.actualPage === 'createEvent' && ( 
+              this.state.userId === 'guest' ? <Unauthorized /> : <CreateEvent />
+            )
+          }
         </div>
       </div>
     )

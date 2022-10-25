@@ -6,6 +6,7 @@ import {
     faTableColumns,
     faCircleExclamation,
     faCalendarDays,
+    faPlus,
     faNewspaper,
     faGears,
     faQuestion,
@@ -38,6 +39,10 @@ class Sidebar extends React.Component<{ userId: string | undefined, isLoggedIn: 
     
                         <MenuItem icon={<FontAwesomeIcon icon={faCalendarDays} />}>
                             <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=nextEvents`} > Eventos </a>
+                        </MenuItem>
+
+                        <MenuItem icon={<FontAwesomeIcon icon={faPlus} />}>
+                            <a href = {`\?user_id=${this.props.userId}&isLogged=${this.props.isLoggedIn.toString()}&window_location=createEvent`} > Cadastro de Evento </a>
                         </MenuItem>
     
                         <MenuItem icon={<FontAwesomeIcon icon={faNewspaper} />}>

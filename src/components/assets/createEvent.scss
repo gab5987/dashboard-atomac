@@ -1,0 +1,41 @@
+@import "../../App.scss";
+
+.Create-event {
+    height: 100vh;
+    color: rgb(198, 198, 198);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: $sidebar-width;
+
+    label {
+        font-size: large;
+    }
+
+    input {
+      height: 30px;
+    }
+    DatePicker {
+      height: 30px;
+    }
+
+    .Create-event_modal {
+      background-color: #39404d;
+      height: 30rem;
+      width: 30rem;
+      border-radius: 10px;
+
+      .Create-event_modal-context { 
+        margin: 3rem;
+        margin-top: 2rem;
+
+        .modal-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
